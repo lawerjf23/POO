@@ -14,7 +14,7 @@ class Conexion {
 		$this->host = 'localhost';
 		$this->user = 'root';
 		$this->pwd = 'toor';
-		$this->db = 'io';
+		$this->db = 'udo';
 		$this->port = '3306';
 		$this->conectar();
 	}
@@ -45,30 +45,4 @@ class Conexion {
 	}
 
 }
-
-$objeto = new Conexion();
-$objeto->conectar();
-$query = sprintf("select * from areas");
-$rst = mysqli_query($objeto->getLink(),$query);
-var_dump($rst);
-$objeto->desconectar();
-
-
-
-
-// function consultaBase($link,$query)
-// {
-// 	$rst = mysqli_query($link,$query);
-// 	return $rst;
-// }
-
-// $link = conectarBase('localhost','root','toor','io');
-// $query = sprintf("select * from areas");
-// $rst = consultaBase($link,$query);
-// desconectarBase($link);
-
-// var_dump($rst);
-
-
-
 ?>
