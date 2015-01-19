@@ -14,16 +14,14 @@ class Alumno {
 		$query = sprintf("select * from alumno where matricula='%s'",$matricula);
 		$rst = mysqli_query($cnn->getLink(),$query);
 		$cnn->desconectar();
+		$alumno->matricula = $matricula;
 		if (mysqli_num_rows($rst)>0) {
 			while ($row = mysqli_fetch_assoc($rst)) {
-				$alumno->matricula = $row['matricula'];
 				$alumno->nombre = $row['nombre'];
 				$alumno->correo = $row['correo'];
-				return $alumno;
 			}
-		} else {
-			return false;
 		}
+		return $alumno;
 	}
 
 // GETTERS con metodo magico __get()
@@ -38,8 +36,37 @@ class Alumno {
 			$this->campo[$variable] = $valor;
 		}
 	}
+
+	public function alta()
+	{
+		$cnn = new Conexion();
+		$query = sprintf("INSERT INTO alumno (matricula, nombre, correo) values ('%s','%s','%s')",$this->matricula,$this->nombre,$this->correo);
+		$rst = mysqli_query($cnn->getLink(), $query);
+		$cnn->desconectar();
+		return $rst;
+	}
+
+	public function listar()
+	{
+		$cnn = new Conexion();
+		$query = sprintf("SELECT * FROM alumno");
+		$rst = mysqli_query($cnn->getLink(), $query);
+		$cnn->desconectar();
+		if (!$rst) {
+			echo "<h1>Error en la consulta</h1>"
+		} elseif (mysqli_num_rows($rst)>0) {
+			return mysqli_fetch_assoc($rst);
+		}
+	}
 }
 ?>
+
+
+
+
+
+
+
 
 
 
