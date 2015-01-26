@@ -50,6 +50,9 @@ if (isset($_POST['opcion'])) {
 		<input type="email" name="correo" id="correo" placeholder="Correo Electronico" required>
 		<button type="submit">Registrar alumno</button>
 	</form>
+	<!-- Listado de alumnos -->
+	<hr>
+	<?php Alumno::listar(); ?>
 </body>
 </html>
 

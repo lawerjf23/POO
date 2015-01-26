@@ -46,16 +46,25 @@ class Alumno {
 		return $rst;
 	}
 
-	public function listar()
+	public static function listar()
 	{
 		$cnn = new Conexion();
 		$query = sprintf("SELECT * FROM alumno");
 		$rst = mysqli_query($cnn->getLink(), $query);
 		$cnn->desconectar();
 		if (!$rst) {
-			echo "<h1>Error en la consulta</h1>"
+			echo "<h1>Error en la consulta</h1>";
 		} elseif (mysqli_num_rows($rst)>0) {
-			return mysqli_fetch_assoc($rst);
+			echo '<table>';
+			echo '<tr><th>MATRICULA</th><th>NOMBRE</th><th>CORREO</th></tr>';
+			while ($row = mysqli_fetch_assoc($rst)) {
+				echo '<tr>';
+				echo '<td>'.$row['matricula'].'</td>';
+				echo '<td>'.$row['nombre'].'</td>';
+				echo '<td>'.$row['correo'].'</td>';
+				echo '</tr>';
+			}
+			echo '</table>';
 		}
 	}
 }
