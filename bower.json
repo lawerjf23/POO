@@ -1,0 +1,29 @@
+{
+  "name": "poo",
+  "version": "0.0.1",
+  "homepage": "https://github.com/bidkar/POO",
+  "authors": [
+    "bidkar <bidkar@gmail.com>"
+  ],
+  "description": "programacion orientada a objetos",
+  "moduleType": [
+    "amd"
+  ],
+  "keywords": [
+    "php",
+    "programacion"
+  ],
+  "license": "GPL",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "jquery": "1.11.2",
+    "bootstrap": "~3.3.2",
+    "fontawesome": "~4.3.0"
+  }
+}
